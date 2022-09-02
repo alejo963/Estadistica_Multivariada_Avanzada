@@ -101,3 +101,54 @@ $$
 <p align="center">
   <img src="./biasvariance.png" />
 </p>
+
+### Alta varianza
+
+Cuando el error de entrenamiento es mucho menor que el de validación es síntoma de que se tiene alta varianza. Para disminuir esta varianza se recomienda:
+- Simplificar modelo
+  - Quitar variables
+  - Regulizar parámetros
+  - Cambiar tipo de modelo
+
+- Más datos de entrenamiento
+- Bagging
+
+### Alto sesgo
+ Cuando el error de entrenamiento es mayor a lo aceptable se tiene un problema de sesgo. Para disminuirlo se recomienda:
+
+ - Complejizar el modelo
+  - Nuevas variables
+  - Disminuir regularización
+  - Cambiar tipo de modelo
+- Más características (X)
+- Boosting
+
+<p align="center">
+  <img width=450 src="./bullseye.png" />
+</p>
+
+## Validación Cruzada
+
+En ausencia de grandes conjuntos de datos para estimar el error de generalización (en TEST), existen diferentes técnicas para aproximar este valor usando los datos disponibles de entrenamiento, especialmente:
+1. Conjunto de validación
+1. Dejar un muestra afuerea (LOOCV)
+1. Usar k-particiones como validación
+
+### Conjunto de validación
+Se divide aleatoriamente los datos en dos conjuntos: entrenamiento y validación. El modelo aprende del conjunto de entrenamiento y se realiza predicciones sobre el conjunto de validación para calcular la métrica
+
+### LOOCV
+
+Se entrenan n modelos dejando un dato por fuera para validar la predicción. No es necesario barajar los datos. La estimación de la métrica se  hace entonces sobre todos los datos
+
+### k-fold Particiones
+
+Se entrenan k modelos dejando conjuntos de validación disjuntos. Es necesario barajar los datos. La estimación de la métrica se hace promediando en los conjuntos
+
+$$
+CV_{(k)}=\frac{1}{k}\sum_{i=1}^k MSE_i
+$$
+
+## Validación en series de tiempo
+Cuando se tiene una dependencia
+Backtesting
